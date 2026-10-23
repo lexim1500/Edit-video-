@@ -1,0 +1,171 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:M;font-weight:500;src:url(montserrat-latin-500-normal.woff2)}
+@font-face{font-family:M;font-weight:600;src:url(montserrat-latin-600-normal.woff2)}
+@font-face{font-family:M;font-weight:700;src:url(montserrat-latin-700-normal.woff2)}
+@font-face{font-family:M;font-weight:800;src:url(montserrat-latin-800-normal.woff2)}
+html,body{margin:0;width:540px;height:960px;background:transparent;overflow:hidden;font-family:M,sans-serif}
+.el{position:absolute;opacity:0;will-change:transform,opacity}
+/* safe zone: x 60..420, y 126..640 */
+.head{left:60px;width:360px;top:142px;text-align:center;color:#fff;font-weight:800;font-size:33px;line-height:1.08;
+  text-shadow:0 2px 10px rgba(0,0,0,.45),0 1px 2px rgba(0,0,0,.4);letter-spacing:.2px}
+.neq{position:relative;display:inline-block}
+.neq:after{content:"";position:absolute;left:50%;top:50%;width:.12em;height:.95em;background:currentColor;border-radius:.05em;transform:translate(-50%,-52%) rotate(28deg)}
+.card{left:66px;width:316px;top:140px;background:#fbf7ee;border-radius:20px;padding:15px 17px 14px;color:#4a453e;
+  box-shadow:0 10px 26px rgba(0,0,0,.28);font-weight:600;font-size:17px;line-height:1.3}
+.card h2{margin:0 0 6px;font-weight:800;font-size:23px;color:#1f1c18;letter-spacing:-.2px}
+.card em{font-style:normal;color:#d9822b;font-weight:800}
+.ln{display:block;opacity:0}
+.cap{left:60px;width:360px;top:600px;text-align:center;font-weight:700;font-size:23px;line-height:1.22;color:#fff;
+  text-shadow:0 2px 6px rgba(0,0,0,.75),0 0 2px rgba(0,0,0,.6)}
+.cap span{color:rgba(255,255,255,.5)} .cap span.on{color:#fff}
+.q{color:rgba(255,255,255,.8);font-weight:600;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.boxes{display:flex;gap:7px;margin-top:4px}
+.box{flex:1;min-width:0;background:#fff6d6;border:1.5px solid #c9a94a;border-radius:8px;text-align:center;padding:8px 3px;opacity:0}
+.box b{display:block;font-weight:800;font-size:14.5px;color:#1f1c18;margin-bottom:3px} .box small{display:block;font-size:12px;line-height:1.2}
+.box .v{display:block;font-weight:800;font-size:13.5px;color:#d9822b;margin-top:4px}
+.pill{left:78px;width:284px;top:254px;background:#fff;border-radius:40px;padding:11px 10px;text-align:center;font-weight:800;font-size:17px;color:#1f1c18;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.handle{left:60px;width:360px;top:316px;text-align:center;font-weight:800;font-size:21px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+#endbg{left:0;top:0;width:540px;height:960px;background:#f6f0e4}
+#endc{left:60px;width:360px;top:300px;text-align:center;color:#1f1c18}
+#endc .h{font-weight:800;font-size:38px;letter-spacing:-.5px}
+#endc .s{font-weight:600;font-size:19px;color:#6b655c;margin-top:14px;line-height:1.35}
+#endc .b{display:inline-block;margin-top:22px;background:#1f1c18;color:#fff;border-radius:40px;padding:13px 24px;font-weight:800;font-size:18px}
+svg text{font-family:M}
+</style></head><body>
+<!-- hook -->
+<div id="hook" class="el head" style="font-size:86px;line-height:1.0;top:150px"><div id="hookA">AGE</div><div id="hookB" style="opacity:0"><span class="neq">=</span> $$$</div></div>
+<!-- calendar vs calculator -->
+<img id="calc" class="el" src="calc.png" style="left:72px;top:146px;width:96px">
+<div id="cal" class="el head" style="left:178px;width:242px;top:178px;text-align:left;font-size:27px">
+  <div id="calA">CALENDAR <svg width="22" height="22" viewBox="0 0 10 10" style="vertical-align:-1px"><path d="M2 2L8 8M8 2L2 8" stroke="#ff6b6b" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+  <div id="calB" style="opacity:0;margin-top:6px">CALCULATOR <svg width="24" height="22" viewBox="0 0 11 10" style="vertical-align:-1px"><path d="M1.5 5.5L4.3 8.2L9.5 2" fill="none" stroke="#5fd38d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</div>
+<!-- 4% rule -->
+<div id="rule" class="el card"><h2 style="margin:0">The 4% Rule</h2>
+  <span class="ln" id="rule1">Withdraw <em>4%</em> in year one</span>
+  <span class="ln" id="rule2">→ live comfortably</span>
+  <span class="ln" id="rule3">→ <em>you can stop working</em></span></div>
+<!-- your number -->
+<div id="num" class="el card"><h2>Find Your Number</h2>
+  <span style="font-size:21px;font-weight:700;color:#1f1c18">Yearly spending <em id="num1" style="opacity:0;display:inline-block">× 25</em></span></div>
+<!-- math -->
+<div id="math" class="el card"><h2 style="margin:0">$50,000 a year</h2>
+  <span class="ln" id="math1" style="font-size:20px;font-weight:700;color:#1f1c18">× 25</span>
+  <span class="ln" id="math2" style="font-size:27px;font-weight:800">= <em id="count">$0</em></span>
+  <span class="ln" id="math3" style="margin-top:3px">4% of that = <b style="color:#1f1c18">$50,000/yr</b></span></div>
+<!-- run out -->
+<div id="qs"></div>
+<div id="runout" class="el head" style="font-size:38px">WON'T IT<br>RUN OUT?</div>
+<!-- growth -->
+<div id="growth" class="el card" style="padding:13px 15px 10px;top:136px"><h2 style="font-size:20px;margin-bottom:2px">Your Account Keeps Growing</h2>
+  <svg id="gsvg" width="286" height="118" viewBox="0 0 286 118"></svg>
+  <span class="ln" id="g1" style="font-size:14px">Market avg <em>~10%/yr</em> · withdrawals rise <em id="g2" style="opacity:0">3%/yr</em></span>
+  <span style="display:block;font-size:9.5px;color:#9a9286;margin-top:2px">Illustration: $1.25M, $50K first-year withdrawal. Not a guarantee.</span></div>
+<!-- two things -->
+<div id="two" class="el head" style="font-size:34px">2 THINGS CAN<br>CHANGE THIS</div>
+<div id="tax1" class="el head" style="font-size:40px">#1 TAXES</div>
+<!-- taxes -->
+<div id="tax" class="el card" style="background:#f6f1fb"><h2 style="font-size:21px">#1 Taxes</h2>
+  <div class="boxes">
+   <div class="box" id="tb1"><b>Roth</b><small>IRA / 401k</small><span class="v">Tax-free</span></div>
+   <div class="box" id="tb2"><b>Traditional</b><small>IRA / 401k</small><span class="v">Taxed when pulled out</span></div>
+   <div class="box" id="tb3"><b>Brokerage</b><small>account</small><span class="v">Taxed on gains</span></div>
+  </div></div>
+<!-- market -->
+<div id="market" class="el card"><h2>#2 The Market</h2>
+  <span style="font-weight:700;color:#1f1c18">10% avg <span class="neq">=</span> guaranteed</span>
+  <div class="ln" id="m1" data-d="flex" style="display:flex;gap:10px;align-items:center;margin-top:8px">
+    <svg width="58" height="58" viewBox="-30 -30 60 60"><circle r="27" fill="#3f8f5f"/><path id="pie1" fill="#d9822b"/></svg>
+    <div style="font-size:13.5px;line-height:1.25"><b style="color:#1f1c18">Good year</b><br>$50K of $1.25M = 4%</div>
+    <svg width="46" height="46" viewBox="-30 -30 60 60"><circle r="27" fill="#3f8f5f"/><path id="pie2" fill="#d9822b"/></svg>
+    <div style="font-size:13.5px;line-height:1.25"><b style="color:#1f1c18">Bad year</b><br>$50K of $0.9M = 5.6%</div></div>
+  <span class="ln" id="m2" style="margin-top:6px">Same $50K = <em>bigger bite of a smaller pot</em></span></div>
+<!-- cash -->
+<div id="cash" class="el card"><h2>Cash Cushion</h2>
+  <span class="ln" id="c0" style="opacity:1">Bad years right after you retire hit hardest</span>
+  <span class="ln" id="c1">→ <em>keep cash on the side</em> for tough times</span></div>
+<!-- cta -->
+<div id="cta" class="el head" style="font-size:38px">RETIRE<br>BEFORE 70?</div>
+<div id="pill" class="el pill">Book a session <span style="color:#d9822b">· link in bio</span></div>
+<div id="handle" class="el handle">@wealth_diet</div>
+<!-- captions -->
+<div id="cap" class="el cap"></div>
+<!-- end card -->
+<div id="endbg" class="el"></div>
+<div id="endc" class="el"><div class="h">@wealth_diet</div><div class="s">Want to retire before 70?<br>Book a money coaching session.</div><div class="b">Link in bio</div></div>
+<script>
+let TL=null;
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const easeOut=x=>1-Math.pow(1-x,3);
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+// visibility window with in/out animation; returns [p_in, p_out]
+function win(el,t,s,e,kind='card',din=.35,dout=.22){
+  if(t<s-0.001||t>e+0.001){el.style.opacity=0;return 0}
+  const pi=cl((t-s)/din), po=cl((e-t)/dout), o=Math.min(easeOut(pi),po);
+  el.style.opacity=o;
+  if(kind==='card') el.style.transform=`translateY(${(1-easeOut(pi))*-26}px) scale(${0.96+0.04*easeOut(pi)})`;
+  else if(kind==='pop') el.style.transform=`scale(${0.75+0.25*back(pi)})`;
+  else if(kind==='drop') el.style.transform=`translateY(${(1-back(pi))*-60}px) rotate(${-8+ (1-pi)*-10}deg)`;
+  return o}
+function reveal(el,t,s,d=.28){const p=cl((t-s)/d);if(el.classList.contains('ln')){el.style.display=t<s?'none':(el.dataset.d||'block')}el.style.opacity=easeOut(p);el.style.transform=`translateY(${(1-easeOut(p))*8}px)`}
+function pie(id,frac){const a=frac*2*Math.PI;const x=27*Math.sin(a),y=-27*Math.cos(a);$(id).setAttribute('d',`M0 0 L0 -27 A27 27 0 ${frac>.5?1:0} 1 ${x.toFixed(2)} ${y.toFixed(2)} Z`)}
+// growth data
+const G=[];{let b=1.25e6,w=5e4;for(let y=0;y<=20;y++){G.push(b);b=(b-w)*1.10;w*=1.03}}
+function buildChart(){
+  const X=i=>34+i*11.6, Y=v=>104-v/4.6e6*96, svg=$('gsvg');
+  let h='';[[0,'$0'],[2e6,'$2M'],[4e6,'$4M']].forEach(([v,l])=>{h+=`<line x1="34" x2="282" y1="${Y(v)}" y2="${Y(v)}" stroke="#e4dccd" stroke-width="1"/><text x="0" y="${Y(v)+4}" font-size="10.5" fill="#8a8276" font-weight="600">${l}</text>`});
+  [[0,'Yr 0'],[10,'Yr 10'],[20,'Yr 20']].forEach(([i,l])=>{h+=`<text x="${X(i)-(i?14:6)}" y="117" font-size="10" fill="#8a8276" font-weight="600">${l}</text>`});
+  h+=`<polyline id="gl" points="${G.map((v,i)=>X(i).toFixed(1)+','+Y(v).toFixed(1)).join(' ')}" fill="none" stroke="#2f7d4f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>`;
+  h+=`<g id="gdot" opacity="0"><circle cx="${X(20)}" cy="${Y(G[20])}" r="5" fill="#e05a5a" stroke="#fff" stroke-width="1.5"/><text x="${X(20)-54}" y="${Y(G[20])+6}" font-size="14" font-weight="800" fill="#1f1c18">$4.5M</text></g>`;
+  h+=`<text x="${X(0)+2}" y="${Y(G[0])-8}" font-size="11" font-weight="800" fill="#1f1c18">$1.25M</text>`;
+  svg.innerHTML=h; const gl=$('gl'); const L=gl.getTotalLength(); gl.style.strokeDasharray=L; gl.dataset.len=L;}
+// question marks
+const QS=[[78,250,46,0],[330,230,64,.5],[300,420,34,1.1],[96,440,52,1.6],[205,330,30,2.1],[370,330,40,.8]];
+function buildQ(){$('qs').innerHTML=QS.map((q,i)=>`<div class="el q" id="q${i}" style="left:${q[0]}px;top:${q[1]}px;font-size:${q[2]}px">?</div>`).join('')}
+function caption(t){
+  const c=TL.caps.find(c=>t>=c.s&&t<c.e); const el=$('cap');
+  if(!c||t>=TL.dur){el.style.opacity=0;return}
+  el.style.opacity=1; el.style.transform='';
+  if(el.dataset.k!=c.s){el.innerHTML=c.words.map(w=>`<span>${w.w}</span>`).join(' ');el.dataset.k=c.s}
+  [...el.children].forEach((s,i)=>s.className=t>=c.words[i].s-0.02?'on':'');
+}
+window.renderAt=function(t){
+  const E=TL.ev;
+  // hook
+  win($('hook'),t,-1,E.hook.e,'pop',0.001); $('hookB').style.opacity=easeOut(cl((t-E.hook.a2)/.2));
+  $('hookB').style.transform=`scale(${0.7+0.3*back(cl((t-E.hook.a2)/.3))})`;
+  // calendar/calculator
+  win($('cal'),t,E.cal.s,E.cal.e,'pop'); reveal($('calB'),t,E.cal.a2);
+  win($('calc'),t,E.cal.a2,E.cal.e,'drop',.45);
+  // cards
+  win($('rule'),t,E.rule.s,E.rule.e); reveal($('rule1'),t,E.rule.b1); reveal($('rule2'),t,E.rule.b2); reveal($('rule3'),t,E.rule.b3);
+  win($('num'),t,E.num.s,E.num.e); {const p=cl((t-E.num.b1)/.3);$('num1').style.opacity=p;$('num1').style.transform=`scale(${0.6+0.4*back(p)})`}
+  win($('math'),t,E.math.s,E.math.e); reveal($('math1'),t,E.math.b1); reveal($('math2'),t,E.math.b2); reveal($('math3'),t,E.math.b3);
+  {const p=easeOut(cl((t-E.math.b2)/(E.math.b2e-E.math.b2)));$('count').textContent='$'+Math.round(1250000*p/1000*1000).toLocaleString('en-US')}
+  // run out
+  win($('runout'),t,E.runout.s,E.runout.e,'pop');
+  QS.forEach((q,i)=>{const el=$('q'+i);const s=E.runout.q+i*0.12;const o=win(el,t,s,E.runout.e,'none',.3,.25);
+    el.style.transform=`translate(${Math.sin((t+q[3])*2.2)*8}px,${-(t-s)*14+Math.cos((t+q[3])*1.7)*6}px) rotate(${Math.sin((t+q[3])*1.3)*14}deg)`});
+  // growth
+  win($('growth'),t,E.growth.s,E.growth.e);
+  {const gl=$('gl'),L=+gl.dataset.len,p=cl((t-E.growth.d0)/(E.growth.d1-E.growth.d0));gl.style.strokeDashoffset=L*(1-easeOut(p));
+   $('gdot').setAttribute('opacity',cl((t-E.growth.d1)/.3)); reveal($('g1'),t,E.growth.b1); $('g2').style.opacity=cl((t-E.growth.b2)/.3)}
+  // two things / taxes
+  win($('two'),t,E.two.s,E.two.b1,'pop',.3,.12); win($('tax1'),t,E.two.b1,E.two.e+0.05,'pop',.25,.15);
+  win($('tax'),t,E.tax.s,E.tax.e); ['tb1','tb2','tb3'].forEach((id,i)=>reveal($(id),t,[E.tax.b1,E.tax.b2,E.tax.b3][i],.3));
+  // market
+  win($('market'),t,E.market.s,E.market.e); reveal($('m1'),t,E.market.b1); reveal($('m2'),t,E.market.b2);
+  pie('pie1',0.04); pie('pie2',0.056*cl((t-E.market.b1)/.6)+0.0001);
+  // cash
+  win($('cash'),t,E.cash.s,E.cash.e); reveal($('c1'),t,E.cash.b1);
+  // cta
+  win($('cta'),t,E.cta.s,E.end.s,'pop',.3,.2); win($('pill'),t,E.cta.b1,E.end.s,'pop',.3,.2); win($('handle'),t,E.cta.b1+0.25,E.end.s,'card',.3,.2);
+  // end card
+  win($('endbg'),t,E.end.s-0.15,E.end.e+1,'none',.3,.01); win($('endc'),t,E.end.s+0.05,E.end.e+1,'pop',.4,.01);
+  caption(t);
+};
+window.init=async function(tl){TL=tl;buildChart();buildQ();await document.fonts.ready;return true};
+</script></body></html>
