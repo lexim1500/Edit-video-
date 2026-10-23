@@ -1,0 +1,111 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:M;font-weight:500;src:url(montserrat-latin-500-normal.woff2)}
+@font-face{font-family:M;font-weight:600;src:url(montserrat-latin-600-normal.woff2)}
+@font-face{font-family:M;font-weight:700;src:url(montserrat-latin-700-normal.woff2)}
+@font-face{font-family:M;font-weight:800;src:url(montserrat-latin-800-normal.woff2)}
+html,body{margin:0;width:540px;height:960px;background:transparent;overflow:hidden;font-family:M,sans-serif}
+.el{position:absolute;opacity:0}
+/* safe zone x 60..420, y 126..640; head top ~ y 295 */
+.head{left:90px;width:360px;top:146px;text-align:center;color:#fff;font-weight:800;font-size:30px;line-height:1.08;
+  text-shadow:0 2px 10px rgba(0,0,0,.45),0 1px 2px rgba(0,0,0,.4)}
+.sub{display:block;font-size:19px;font-weight:700;margin-top:8px;opacity:0}
+.neq{position:relative;display:inline-block}
+.neq:after{content:"";position:absolute;left:50%;top:50%;width:.12em;height:.95em;background:currentColor;border-radius:.05em;transform:translate(-50%,-52%) rotate(28deg)}
+.card{left:111px;width:318px;top:138px;background:#fbf7ee;border-radius:18px;padding:12px 15px 11px;color:#4a453e;
+  box-shadow:0 10px 26px rgba(0,0,0,.28);font-weight:600;font-size:15px;line-height:1.3;box-sizing:border-box}
+.card h2{margin:0 0 5px;font-weight:800;font-size:21px;color:#1f1c18;letter-spacing:-.2px;white-space:nowrap}
+.card em{font-style:normal;color:#d9822b;font-weight:800}
+.ln{display:block;opacity:0}
+.cap{left:110px;width:320px;top:712px;text-align:center;font-weight:700;font-size:23px;line-height:1.22;color:#fff;
+  text-shadow:0 2px 6px rgba(0,0,0,.75),0 0 2px rgba(0,0,0,.6)}
+.cap span{color:rgba(255,255,255,.5)} .cap span.on{color:#fff}
+.pol{top:128px;width:172px;background:none;padding:0;overflow:hidden;border-radius:14px;box-shadow:0 6px 14px rgba(0,0,0,.35);border-radius:2px}
+.pol img{display:block;width:172px;height:160px;object-fit:cover}
+.pol div{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);background:rgba(255,255,255,.92);border-radius:20px;padding:3px 9px!important;font-size:11px;white-space:nowrap;font-weight:800;color:#3a352e;text-align:center;padding:3px 0 4px;letter-spacing:.3px}
+.bar{height:10px;background:#ece5d6;border-radius:6px;margin:6px 0 5px;overflow:hidden} .bar i{display:block;height:100%;border-radius:6px}
+.two{left:94px;width:352px;top:140px;display:flex;gap:10px}
+.mini{flex:1;background:#fbf7ee;border-radius:16px;text-align:center;padding:10px 6px 9px;box-shadow:0 10px 24px rgba(0,0,0,.28);opacity:0}
+.mini small{display:block;font-size:12.5px;font-weight:700;color:#7a7266}
+.mini b{display:block;font-size:34px;font-weight:800;color:#1f1c18;line-height:1.1}
+.mini span{font-size:15px;font-weight:800;letter-spacing:.5px}
+.months{display:flex;gap:6px;margin-top:7px} .months i{flex:1;height:16px;border:1.6px solid #c9a94a;border-radius:4px;background:#fff6d6}
+.row{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:#3a352e;margin-top:4px}
+.step{display:flex;align-items:center;gap:8px;opacity:0;margin-top:5px;font-size:15px;font-weight:700;color:#2a2620}
+.step b{flex:0 0 22px;height:22px;border-radius:50%;background:#d9822b;color:#fff;font-size:13px;text-align:center;line-height:22px}
+.pill{left:134px;width:272px;top:232px;background:#fff;border-radius:40px;padding:10px 8px;text-align:center;font-weight:800;font-size:16.5px;color:#1f1c18;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.handle{left:90px;width:360px;top:282px;text-align:center;font-weight:800;font-size:17px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+</style></head><body>
+<div id="hook" class="el head" style="font-size:42px;top:150px">HIGH INCOME<br>POVERTY<span id="hookS" class="sub">6 figures. $0 saved.</span></div>
+<div id="up" class="el head" style="font-size:23.5px">YOUR INCOME WENT UP.<br>SO DID EVERYTHING ELSE.</div>
+<div id="pols"></div>
+<div id="creep" class="el head" style="font-size:40px">LIFESTYLE<br>CREEP<span id="creepS" class="sub">a little at a time</span></div>
+<div id="ex" class="el card"><h2 id="exT">$0 a year</h2><span class="ln" id="ex1">after taxes ≈ <em>$9,000 a month</em></span></div>
+<div id="bud" class="el card"><div style="display:flex;justify-content:space-between;align-items:baseline">
+  <h2 style="margin:0">Left this month</h2><b id="budN" style="font-size:24px;color:#1f1c18">$9,000</b></div>
+  <div class="bar"><i id="budB" style="width:100%;background:#3f8f5f"></i></div>
+  <div class="row"><span id="budL">Rent</span><span id="budA" style="color:#d64545">-$3,500</span></div></div>
+<div id="rich" class="el two"><div class="mini" id="r1"><small>On paper</small><b>$150K</b><span style="color:#2f7d4f">RICH</span></div>
+  <div class="mini" id="r2"><small>Bank account</small><b>$0</b><span style="color:#d64545">BROKE</span></div></div>
+<div id="prob" class="el card"><h2>Lost your job tomorrow?</h2><span class="ln" id="prob1">How many months could you last?</span>
+  <div class="months" id="mo"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+<div id="w1" class="el head">WEALTH <span class="neq">=</span><br>WHAT YOU EARN</div>
+<div id="w2" class="el head">IT'S WHAT<br>YOU KEEP</div>
+<div id="svs" class="el card"><h2>Saver vs Spender</h2>
+  <div class="row"><span>$70K, invests $1K/mo</span><em id="sv1">$0</em></div><div class="bar" style="margin:3px 0 4px"><i id="svB1" style="width:0;background:#3f8f5f"></i></div>
+  <div class="row ln" id="svR2" data-d="flex"><span>$200K, spends it all</span><span style="color:#d64545;font-weight:800">$0</span></div>
+  <div style="font-size:9.5px;color:#9a9286;margin-top:4px">Illustration: $1,000/mo, 8% avg return, 20 years.</div></div>
+<div id="steps" class="el card"><h2>How to get out</h2>
+  <div class="step" id="st1"><b>1</b>Track where it goes</div>
+  <div class="step" id="st2"><b>2</b>Pay yourself first</div>
+  <div class="step" id="st3"><b>3</b><span>Split every raise: <em>future you</em></span></div></div>
+<div id="cta" class="el head" style="font-size:27px">GOOD MONEY BUT<br>STILL FEEL BROKE?</div>
+<div id="pill" class="el pill">Book a session <span style="color:#d9822b">· link in bio</span></div>
+<div id="handle" class="el handle">@wealth_diet</div>
+<div id="cap" class="el cap"></div>
+<script>
+let TL=null; const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)); const easeOut=x=>1-Math.pow(1-x,3);
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const money=v=>'$'+Math.round(v).toLocaleString('en-US');
+function win(el,t,s,e,kind='card',din=.35,dout=.22){
+  if(t<s-0.001||t>e+0.001){el.style.opacity=0;return 0}
+  const pi=cl((t-s)/din),po=cl((e-t)/dout),o=Math.min(easeOut(pi),po); el.style.opacity=o;
+  if(kind==='card') el.style.transform=`translateY(${(1-easeOut(pi))*-24}px) scale(${0.96+0.04*easeOut(pi)})`;
+  else if(kind==='pop') el.style.transform=`scale(${0.75+0.25*back(pi)})`;
+  return o}
+function reveal(el,t,s,d=.28){const p=cl((t-s)/d); if(el.classList.contains('ln')) el.style.display=t<s?'none':(el.dataset.d||'block');
+  el.style.opacity=easeOut(p); el.style.transform=`translateY(${(1-easeOut(p))*8}px)`}
+function pop(el,t,s,d=.3){const p=cl((t-s)/d);el.style.opacity=easeOut(p);el.style.transform=`scale(${0.6+0.4*back(p)})`}
+const PH=[['apartment','Home'],['car','Car'],['bag','Bag'],['trip','Trips'],['dinner','Dinners']];
+const ROT=[0,0,0,0,0]; const OFF=[0,0,0,0,0];
+function buildPol(){$('pols').innerHTML=PH.map((p,i)=>`<div class="el pol" id="pl${i}" style="left:${270-86+OFF[i]}px;z-index:${i}"><img src="${p[0]}.jpg"></div>`).join('')}
+const BUD=[['Rent',3500],['Car payment',800],['Credit cards',600],['Eating out + DoorDash',1200],['Shopping',1000],['Subscriptions + travel',1900]];
+function caption(t){const c=TL.caps.find(c=>t>=c.s&&t<c.e),el=$('cap'); if(!c){el.style.opacity=0;return}
+  el.style.opacity=1; if(el.dataset.k!=c.s){el.innerHTML=c.words.map(w=>`<span>${w.w}</span>`).join(' ');el.dataset.k=c.s}
+  [...el.children].forEach((s,i)=>s.className=t>=c.words[i].s-0.02?'on':'')}
+window.renderAt=function(t){const E=TL.ev;
+  win($('hook'),t,-1,E.hook.e,'pop',.001); reveal($('hookS'),t,E.hook.b1);
+  win($('up'),t,E.up.s,E.up.e,'pop');
+  PH.forEach((p,i)=>{const el=$('pl'+i),s=E.photos.p[i],e=s+1.0; if(t<s||t>e){el.style.opacity=0;return}
+    const pi=cl((t-s)/.25),po=cl((e-t)/.2); el.style.opacity=Math.min(easeOut(pi),po);
+    el.style.transform=`scale(${0.8+0.2*back(pi)})`});
+  win($('creep'),t,Math.max(E.creep.s,E.photos.p[4]+0.85),E.creep.e,'pop'); reveal($('creepS'),t,E.creep.b1);
+  win($('ex'),t,E.ex.s,E.ex.e); {const p=easeOut(cl((t-E.ex.b1)/1.0));$('exT').textContent=money(150000*p)+' a year'} reveal($('ex1'),t,E.ex.b2);
+  if(win($('bud'),t,E.bud.s,E.bud.e)>0){let left=9000,k=-1;BUD.forEach((b,i)=>{if(t>=E.bud.x[i]){k=i;left-=b[1]*easeOut(cl((t-E.bud.x[i])/.5))}});
+    left=Math.max(0,left); $('budN').textContent=money(left); $('budN').style.color=left<1?'#d64545':'#1f1c18';
+    const w=left/9000*100,b=$('budB'); b.style.width=w+'%'; b.style.background=w>50?'#3f8f5f':(w>20?'#d9822b':'#d64545');
+    const L=$('budL'),A=$('budA'); if(k<0){L.textContent='';A.textContent=''} else {L.textContent=BUD[k][0];A.textContent='-'+money(BUD[k][1]);pop(L.parentNode,t,E.bud.x[k],.25)}
+    if(t>=E.bud.gone){L.textContent='Gone.';A.textContent=''}}
+  win($('rich'),t,E.rich.s,E.rich.e,'none',.01); pop($('r1'),t,E.rich.s); pop($('r2'),t,E.rich.b1,.25);
+  win($('prob'),t,E.prob.s,E.prob.e); reveal($('prob1'),t,E.prob.b1);
+  [...$('mo').children].forEach((m,i)=>{const on=i===0&&t>=E.prob.one&&t<E.prob.none+0.15; m.style.background=on?'#d9822b':(t>=E.prob.none+0.15?'#fff':'#fff6d6'); m.style.borderColor=t>=E.prob.none+0.15?'#d64545':'#c9a94a'});
+  win($('w1'),t,E.wealth.s,E.wealth.b1,'pop',.3,.12); win($('w2'),t,E.wealth.b1,E.wealth.e,'pop',.25,.15);
+  if(win($('svs'),t,E.svs.s,E.svs.e)>0){const p=easeOut(cl((t-E.svs.b1)/2.5)); $('svB1').style.width=(p*100)+'%'; $('sv1').textContent=money(589020*p); reveal($('svR2'),t,E.svs.b2)}
+  win($('steps'),t,E.steps.s,E.steps.e); ['st1','st2','st3'].forEach((id,i)=>{const el=$(id),p=cl((t-E.steps.x[i])/.3);el.style.opacity=t<E.steps.x[i]?0.18:0.18+0.82*easeOut(p)});
+  win($('cta'),t,E.cta.s,E.cta.e+1,'pop',.3,.01); win($('pill'),t,E.cta.b1,E.cta.e+1,'pop',.3,.01); win($('handle'),t,E.cta.b1+0.25,E.cta.e+1,'card',.3,.01);
+  caption(t)};
+window.init=async function(tl){TL=tl;buildPol();await document.fonts.ready;
+  await Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>{i.onload=r;i.onerror=r})));return true};
+</script></body></html>

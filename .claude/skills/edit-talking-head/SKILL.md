@@ -1,9 +1,13 @@
 ---
 name: edit-talking-head
-description: Edit a raw talking-head video (finance tips, @wealth_diet) into a TikTok/Reels-ready short in the style of a reference video. Storyboard first, then cut pauses, punch-in zooms, word-by-word captions, animated info cards and charts, and an end card. Use when the user shares a raw video (usually a Google Drive link) and asks to edit it, storyboard it, or copy a reference video's style.
+description: Plan and storyboard a raw talking-head video (finance tips, @wealth_diet) for TikTok/Reels in the style of a reference video. This skill ONLY makes storyboards and revisions. Use when the user shares a raw video (usually a Google Drive link), asks to edit it, storyboard it, change it, or copy a reference video's style. The final render happens only in the make-final-video skill, when the user explicitly asks for the final video.
 ---
 
-# Edit a talking-head video
+# Edit a talking-head video: storyboard stage
+
+**Hard rule: only storyboards here.** Keep making and revising storyboards until the user explicitly asks for the
+final video ("make the final video"). Photos, a "perfect", a handle or any change request are NOT that request.
+When they ask, switch to the `make-final-video` skill.
 
 Proven workflow from the first project ("Retirement is a number", Oct 2026). The
 `examples/` folder holds the exact files used there. Copy and adapt them; don't start from zero.
@@ -13,17 +17,18 @@ Proven workflow from the first project ("Retirement is a number", Oct 2026). The
 - Handle: **@wealth_diet**. CTA: "Book a session · link in bio" button plus handle above the head.
   **No end card** by default (user dropped it on video 2); hold the last frame about 0.8s instead.
 - Always send a **storyboard first** (PNG of real frames with mocked overlays), revise until they say "go".
-  **Never start the full edit without an explicit "go".** New inputs (photos, handle, a change request) are not a go:
-  put them into an updated storyboard (use the real photos), send it, and wait.
+  Never render the final video from this skill. New inputs go into an updated storyboard (with the real photos).
 - Headlines: **white Montserrat 800**, smaller rather than huge (the hook can be extra large, e.g. "AGE ≠ $$$").
 - Cards: cream "paper" card (#fbf7ee), **no colored corner circles**, Montserrat, orange (#d9822b) for key words.
-- **All cards and headlines sit above the speaker's head**, never over the face.
+- **All cards, headlines, photos and buttons sit above the speaker's head, centered on her face (x=270 of 540)**, never over the face.
+  Above y=250 the safe zone allows up to x=480, so a 360px-wide element centered at 270 is fine.
 - **TikTok safe zone** on a 540×960 grid: 60px left, 120px right, 126px top, 320px bottom.
   Every graphic stays inside it. Draw it as a dashed box on storyboard frames.
 - Captions: word by word (spoken word white, upcoming at 50% white), placed **low, around the mic hand**
-  (top of caption block at y=650 of 960, moved down on video 2). That's slightly below the safe line; warn them to keep post descriptions short.
+  (caption block top at y=712 of 960, 320px wide, centered at x=270; moved down twice on video 2). That's slightly below the safe line; warn them to keep post descriptions short.
 - Use real photos when the user asks for an image. Ask the user for them (stock sites are blocked); they send them in chat.
-  Video 2 used polaroid-style photos (76px wide, white border, label, slight tilt) popping in one per word in a row above the head.
+  Photo style (approved on video 2): **plain photos, no text, no frame, no tilt**, cropped to fill about 172×160 (of 540×960),
+  centered above the head, **one at a time, each on screen about 1 second**, popping in on the word that names it.
   `assets/calc.png` is their calculator cutout.
 - Voice only, no music, unless asked. Slight warm grade. Loudness -14 LUFS.
 - **No emojis anywhere**: not in post captions, titles, on-screen text, cards, buttons or storyboards. Use plain words or simple drawn icons instead.
@@ -42,7 +47,22 @@ Proven workflow from the first project ("Retirement is a number", Oct 2026). The
 - Chromium for rendering: `/opt/pw-browsers/chromium`, Playwright at `NODE_PATH=/opt/node22/lib/node_modules`.
 - Work in the scratchpad; never commit the videos.
 
-## Steps
+## Storyboard workflow
+
+1. **Study** the raw (and reference) video: `ffprobe`, contact sheets (`fps=0.5,scale=180:-1,tile=8x3` with drawtext timestamps),
+   a frame with a grid to measure where the head top sits (it decides how much room cards have).
+2. **Transcribe** (see Environment notes) and find pauses with `silencedetect=n=-35dB:d=0.3`.
+   She often records each line 2 to 5 times: pick the last clean complete take of each line.
+3. **Check for burned-in phone text** (`scripts/textspan.py`); plan a clean-patch removal.
+4. **First storyboard**: mock overlays in CSS on real frames (`examples/storyboard_mock_high_income_poverty.py`),
+   rendered with `scripts/shot.js`. Ask for any photos needed.
+5. **Revisions**: once the plan is settled, build the real edit plan and overlay page (steps 1 to 3 of
+   `make-final-video`: base render plus overlay test frames) and make storyboards from **real frames**
+   with `scripts/storyboard_from_render.py`. This shows exactly what the final will look like. Iterate.
+6. Stop and wait. Only the user's explicit request for the final video moves on to `make-final-video`.
+
+## Reference: previous technical steps
+
 
 1. **Study** both videos: `ffprobe`, contact sheets (`fps=1,scale=180:-1,tile=8x3` with drawtext timestamps),
    a few full frames. List the reference's techniques (headline style, cards, captions, zooms, pacing, end card).
