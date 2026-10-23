@@ -13,6 +13,8 @@ Proven workflow from the first project ("Retirement is a number", Oct 2026). The
 - Handle: **@wealth_diet**. CTA: "Book a session · link in bio" button plus handle above the head.
   **No end card** by default (user dropped it on video 2); hold the last frame about 0.8s instead.
 - Always send a **storyboard first** (PNG of real frames with mocked overlays), revise until they say "go".
+  **Never start the full edit without an explicit "go".** New inputs (photos, handle, a change request) are not a go:
+  put them into an updated storyboard (use the real photos), send it, and wait.
 - Headlines: **white Montserrat 800**, smaller rather than huge (the hook can be extra large, e.g. "AGE ≠ $$$").
 - Cards: cream "paper" card (#fbf7ee), **no colored corner circles**, Montserrat, orange (#d9822b) for key words.
 - **All cards and headlines sit above the speaker's head**, never over the face.
