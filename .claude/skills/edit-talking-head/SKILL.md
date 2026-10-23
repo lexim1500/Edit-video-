@@ -21,6 +21,7 @@ Proven workflow from the first project ("Retirement is a number", Oct 2026). The
   (about y=600 of 960). That's slightly below the safe line; warn them to keep post descriptions short.
 - Use real photos when the user asks for an image (they may provide one; `assets/calc.png` is their calculator cutout).
 - Voice only, no music, unless asked. Slight warm grade. Loudness -14 LUFS.
+- **No emojis anywhere**: not in post captions, titles, on-screen text, cards, buttons or storyboards. Use plain words or simple drawn icons instead.
 
 ## Environment notes (cloud sandbox)
 
@@ -63,7 +64,7 @@ Proven workflow from the first project ("Retirement is a number", Oct 2026). The
 
 ## 9. Post captions (after delivering the video)
 
-Write both captions in chat, ready to paste.
+Write both captions in chat, ready to paste. No emojis.
 
 **TikTok** (SEO-optimized, exactly **5 hashtags**):
 - Line 1 is the search phrase people type, phrased as a question or hook ("How much do you need to retire?").
@@ -76,5 +77,5 @@ Write both captions in chat, ready to paste.
 add the topic, then 2 to 3 hashtags including #shorts. Count characters with python before sending.
 
 Example from the first video:
-- TikTok: "How much do you need to retire? 💰 Retirement isn't an age, it's a number. Multiply your yearly spending by 25 to find your retirement number, then use the 4% rule to know when you can stop working. Want to retire before 70? Book a money coaching session, link in bio. #retirementplanning #4percentrule #financialfreedom #personalfinance #FIRE"
+- TikTok: "How much do you need to retire? Retirement isn't an age, it's a number. Multiply your yearly spending by 25 to find your retirement number, then use the 4% rule to know when you can stop working. Want to retire before 70? Book a money coaching session, link in bio. #retirementplanning #4percentrule #financialfreedom #personalfinance #FIRE"
 - YouTube (87 chars): "How Much Do You Need to Retire? The 4% Rule Explained #retirement #4percentrule #shorts"
