@@ -60,3 +60,21 @@ Proven workflow from the first project ("Retirement is a number", Oct 2026). The
    Watch for text overflowing the safe zone, wrapping titles, and empty cards (lines use display:none until revealed).
 7. **Composite**: `overlay` the PNG sequence on the base, libx264 CRF 18 `-preset slow`, `+faststart`, AAC 192k.
 8. **QA**: contact sheet of the final plus close-ups around any patch. Then send the MP4 with SendUserFile.
+
+## 9. Post captions (after delivering the video)
+
+Write both captions in chat, ready to paste.
+
+**TikTok** (SEO-optimized, exactly **5 hashtags**):
+- Line 1 is the search phrase people type, phrased as a question or hook ("How much do you need to retire?").
+- Next 2 to 3 short sentences repeat the main keywords naturally (retirement number, 4% rule, retire early) and give the takeaway.
+- End with the CTA: "Want to retire before 70? Book a money coaching session, link in bio."
+- 5 hashtags: mix broad and niche, e.g. #retirementplanning #4percentrule #financialfreedom #personalfinance #FIRE.
+- Keep it short. A long description covers the on-screen captions, which sit just below the safe line.
+
+**YouTube Shorts title**: **under 100 characters including hashtags**. Lead with the searchable question,
+add the topic, then 2 to 3 hashtags including #shorts. Count characters with python before sending.
+
+Example from the first video:
+- TikTok: "How much do you need to retire? 💰 Retirement isn't an age, it's a number. Multiply your yearly spending by 25 to find your retirement number, then use the 4% rule to know when you can stop working. Want to retire before 70? Book a money coaching session, link in bio. #retirementplanning #4percentrule #financialfreedom #personalfinance #FIRE"
+- YouTube (87 chars): "How Much Do You Need to Retire? The 4% Rule Explained #retirement #4percentrule #shorts"
