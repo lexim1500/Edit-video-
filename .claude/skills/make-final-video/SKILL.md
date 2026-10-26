@@ -28,8 +28,9 @@ and scripts apply here too: scripts are in `../edit-talking-head/scripts/`, work
 3. **Graphics** (adapt `examples/overlay_high_income_poverty.html`; reuse the approved storyboard's overlay as is):
    `node ../edit-talking-head/scripts/render_overlay.js <overlay_dir> <out_dir> 30 all`
    (`NODE_PATH=/opt/node22/lib/node_modules`, 4 parallel pages, 1080×1920 PNGs).
-4. **Composite**: overlay the PNG sequence on the base, libx264 CRF 18 `-preset slow`, `+faststart`, AAC 192k,
-   `-t` = base duration.
+4. **Composite**: overlay the PNG sequence on the base, libx264 `-preset slow -b:v 7M -maxrate 9M -bufsize 14M -g 60`,
+   `+faststart`, AAC 160k, `-t` = base duration. **Keep the file under 90 MB**: the Claude phone app won't offer
+   Save Video for files over about 100 MB (a 106 MB file could not be saved; 67 MB and 95 MB could).
 5. **QA**: list clip lengths from `inputs.json` (no clip under 0.5s); `freezedetect` should only flag the end hold;
    frame timestamps evenly spaced. Then a contact sheet (`fps=1/3,scale=216:384,tile=8x3`) and close-ups. Check graphics are centered over the head,
    inside the safe zone, never over the face, and captions read correctly.
