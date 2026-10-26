@@ -12,6 +12,12 @@ and scripts apply here too: scripts are in `../edit-talking-head/scripts/`, work
 
 ## Steps
 
+0. **Make a frame-exact intermediate first.** iPhone footage is HEVC; seeking it with `-ss` lands a few frames early,
+   so each clip starts with out-of-place frames. That caused stutter on TikTok/YouTube (worst at the start).
+   Convert once and cut from this file instead of the raw:
+   `ffmpeg -i raw.mov -map 0:v:0 -map 0:a:0 -vf fps=30,format=yuv420p -c:v libx264 -preset veryfast -crf 14 -g 1 -c:a pcm_s16le -ar 48000 mezz.mov`
+   Final export: `-profile:v high -level 4.1 -g 30 -keyint_min 30 -sc_threshold 0 -r 30`, AAC 192k 48kHz stereo.
+
 1. **Edit plan** (adapt `examples/edit_high_income_poverty.py`):
    - TAKES = the chosen take for each line; cut pauses ≥0.3s inside takes (keep 0.10s after, 0.07s before speech).
    - **Snap every cut to the 30fps frame grid**, otherwise A/V and captions drift.
