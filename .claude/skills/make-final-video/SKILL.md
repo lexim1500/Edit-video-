@@ -5,7 +5,11 @@ description: Render the final edited video for a @wealth_diet talking-head proje
 
 # Make the final video
 
-Only run this when the user has explicitly asked for the final video. Everything before that
+Only run this when the user has explicitly asked for the final video.
+
+**Always render with `render_final.sh`** (steps 0, 2, 4 and the timing QA in one script, exactly as it was when the
+video played cleanly on TikTok and YouTube). Do not hand-write the ffmpeg render commands or cut from the raw HEVC file:
+`render_final.sh <raw.mov> <work_dir> <overlay_frames_dir> <out.mp4>`. It refuses to render if any clip is under 0.5s. Everything before that
 (planning, storyboards, revisions) lives in the `edit-talking-head` skill. Its style defaults, environment notes
 and scripts apply here too: scripts are in `../edit-talking-head/scripts/`, worked examples in
 `../edit-talking-head/examples/` (`*_high_income_poverty.*` is the latest approved style).
@@ -29,14 +33,12 @@ and scripts apply here too: scripts are in `../edit-talking-head/scripts/`, work
    - Snap caption words to the nearest kept segment (0.35s before, 0.15s after), fix transcript slips by hand.
    - No end card: hold the last frame about 0.8s (`tpad`/`apad`).
    - Writes `work/filter.txt`, `work/inputs.json`, `overlay/timeline.json`.
-2. **Base render** (background): ffmpeg with the inputs and `-filter_complex_script`, libx264 CRF 16. Check the
-   duration equals the plan. Tag color on every encode: `-colorspace bt709 -color_primaries bt709 -color_trc bt709 -color_range tv`.
+2. **Base render**: done by `render_final.sh` from `mezz.mov` (never the raw). Check the duration equals the plan. Tag color on every encode: `-colorspace bt709 -color_primaries bt709 -color_trc bt709 -color_range tv`.
 3. **Graphics** (adapt `examples/overlay_high_income_poverty.html`; reuse the approved storyboard's overlay as is):
    `node ../edit-talking-head/scripts/render_overlay.js <overlay_dir> <out_dir> 30 all`
    (`NODE_PATH=/opt/node22/lib/node_modules`, 4 parallel pages, 1080×1920 PNGs).
-4. **Composite**: overlay the PNG sequence on the base, libx264 `-preset slow -b:v 7M -maxrate 9M -bufsize 14M -g 60`,
-   `+faststart`, AAC 160k, `-t` = base duration. **Keep the file under 90 MB**: the Claude phone app won't offer
-   Save Video for files over about 100 MB (a 106 MB file could not be saved; 67 MB and 95 MB could).
+4. **Composite and export**: done by `render_final.sh` (7 Mbps cap, keyframe every 1s, AAC 192k 48kHz).
+   **Keep the file under 90 MB**: the Claude phone app won't offer Save Video for files over about 100 MB.
 5. **QA**: list clip lengths from `inputs.json` (no clip under 0.5s); `freezedetect` should only flag the end hold;
    frame timestamps evenly spaced. Then a contact sheet (`fps=1/3,scale=216:384,tile=8x3`) and close-ups. Check graphics are centered over the head,
    inside the safe zone, never over the face, and captions read correctly.
