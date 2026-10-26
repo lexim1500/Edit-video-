@@ -12,7 +12,7 @@ video played cleanly on TikTok and YouTube). Do not hand-write the ffmpeg render
 `render_final.sh <raw.mov> <work_dir> <overlay_frames_dir> <out.mp4>`. It refuses to render if any clip is under 0.5s. Everything before that
 (planning, storyboards, revisions) lives in the `edit-talking-head` skill. Its style defaults, environment notes
 and scripts apply here too: scripts are in `../edit-talking-head/scripts/`, worked examples in
-`../edit-talking-head/examples/` (`*_high_income_poverty.*` is the latest approved style).
+`../edit-talking-head/examples/` (`*_low_spend_month.*` is the latest approved style).
 
 ## Steps
 
@@ -22,7 +22,7 @@ and scripts apply here too: scripts are in `../edit-talking-head/scripts/`, work
    `ffmpeg -i raw.mov -map 0:v:0 -map 0:a:0 -vf fps=30,format=yuv420p -c:v libx264 -preset veryfast -crf 14 -g 1 -c:a pcm_s16le -ar 48000 mezz.mov`
    Final export: `-profile:v high -level 4.1 -g 30 -keyint_min 30 -sc_threshold 0 -r 30`, AAC 192k 48kHz stereo.
 
-1. **Edit plan** (adapt `examples/edit_high_income_poverty.py`):
+1. **Edit plan** (adapt `examples/edit_low_spend_month.py`). 4K footage is fine: `render_final.sh` scales to 1080×1920.
    - TAKES = the chosen take for each line; cut pauses ≥0.3s inside takes (keep 0.10s after, 0.07s before speech).
    - **Snap every cut to the 30fps frame grid**, otherwise A/V and captions drift.
    - Punch-in zooms (1.1 to 1.15) on new points, anchored at the head-top height (`AY`) so the head top stays put.
@@ -34,7 +34,7 @@ and scripts apply here too: scripts are in `../edit-talking-head/scripts/`, work
    - No end card: hold the last frame about 0.8s (`tpad`/`apad`).
    - Writes `work/filter.txt`, `work/inputs.json`, `overlay/timeline.json`.
 2. **Base render**: done by `render_final.sh` from `mezz.mov` (never the raw). Check the duration equals the plan. Tag color on every encode: `-colorspace bt709 -color_primaries bt709 -color_trc bt709 -color_range tv`.
-3. **Graphics** (adapt `examples/overlay_high_income_poverty.html`; reuse the approved storyboard's overlay as is):
+3. **Graphics** (adapt `examples/overlay_low_spend_month.html`; reuse the approved storyboard's overlay as is):
    `node ../edit-talking-head/scripts/render_overlay.js <overlay_dir> <out_dir> 30 all`
    (`NODE_PATH=/opt/node22/lib/node_modules`, 4 parallel pages, 1080×1920 PNGs).
 4. **Composite and export**: done by `render_final.sh` (7 Mbps cap, keyframe every 1s, AAC 192k 48kHz).

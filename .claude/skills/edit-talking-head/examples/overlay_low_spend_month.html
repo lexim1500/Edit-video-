@@ -1,0 +1,94 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:M;font-weight:500;src:url(montserrat-latin-500-normal.woff2)}
+@font-face{font-family:M;font-weight:600;src:url(montserrat-latin-600-normal.woff2)}
+@font-face{font-family:M;font-weight:700;src:url(montserrat-latin-700-normal.woff2)}
+@font-face{font-family:M;font-weight:800;src:url(montserrat-latin-800-normal.woff2)}
+@font-face{font-family:T;font-weight:500;src:url(tiktok-sans-latin-500-normal.woff2)}
+html,body{margin:0;width:540px;height:960px;background:transparent;overflow:hidden;font-family:M,sans-serif}
+.el{position:absolute;opacity:0}
+/* text centered on frame (x=270); head top ~ y 330 */
+.head{left:60px;width:420px;top:150px;text-align:center;color:#fff;font-weight:800;font-size:38px;line-height:1.0;
+  text-shadow:0 2px 10px rgba(0,0,0,.45),0 1px 2px rgba(0,0,0,.35)}
+.subin{display:block;font-weight:600;font-size:21px;line-height:1.15;margin-top:6px;opacity:0}
+.card{left:111px;width:318px;top:146px;background:#fbf7ee;border-radius:18px;padding:12px 14px 11px;color:#4a453e;text-align:center;
+  box-shadow:0 10px 26px rgba(0,0,0,.28);font-weight:500;font-size:18px;line-height:1.25;box-sizing:border-box}
+.card h2{margin:0 0 4px;font-weight:800;font-size:22px;line-height:1.08;color:#1f1c18}
+.card em{font-style:normal;color:#d9822b;font-weight:800}
+.ln{display:block;opacity:0}
+.x{display:inline-block;width:20px;height:20px;border-radius:50%;background:#d64545;color:#fff;font-size:13px;line-height:20px;font-weight:800;text-align:center;vertical-align:2px;margin-right:4px}
+.item{display:inline-block;margin:0 5px;font-weight:600;color:#2a2620;position:relative}
+.item s{position:absolute;left:-2px;right:-2px;top:52%;height:3px;background:#d64545;border-radius:2px;transform-origin:left;transform:scaleX(0)}
+.rule{opacity:.25;font-weight:600;color:#2a2620;margin-top:3px}
+.pay{display:flex;gap:10px;justify-content:center;margin:6px 0 6px}
+.pay i{width:62px;height:40px;border:2px solid #c9a94a;border-radius:8px;background:#fff6d6;font-style:normal;font-weight:800;font-size:13px;color:#8a7a50;display:flex;align-items:center;justify-content:center}
+.photo{left:100px;top:280px;width:340px;height:380px;border-radius:22px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.cap{left:110px;width:320px;top:745px;text-align:center;font-family:T,M,sans-serif;font-weight:500;font-size:25px;line-height:1.22;color:#fff;
+  text-shadow:0 2px 6px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.5)}
+.cap span{color:rgba(255,255,255,.5)} .cap span.on{color:#fff}
+.pill{left:135px;width:270px;top:256px;background:#fff;border-radius:40px;padding:10px 8px;text-align:center;font-weight:800;font-size:19px;color:#1f1c18;box-shadow:0 6px 18px rgba(0,0,0,.3);box-sizing:border-box}
+.handle{left:60px;width:420px;top:310px;text-align:center;font-weight:800;font-size:19px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+</style></head><body>
+<div id="hook" class="el head" style="font-size:60px;line-height:0.98;top:146px">Low Spend<br>Month<span id="hookS" class="subin" style="font-size:22px">now until Thanksgiving</span></div>
+<div id="cred" class="el head"><span id="credN">$0</span> Invested<br>by 28</div>
+<div id="reasons" class="el head" style="font-size:44px">3 Reasons<span id="reasonsS" class="subin">the last one is the biggest</span></div>
+<div id="h1" class="el card"><h2>#1 Holidays are<br>2 months away</h2><span class="ln" id="h1a">Need it? <em>Gift wish list</em> or <em>Black Friday</em></span></div>
+<div id="skip" class="el card"><h2>Skip for 1 month</h2>
+  <span class="item">Clothes<s id="sk0"></s></span><span class="item">Beauty<s id="sk1"></s></span><span class="item">Tech<s id="sk2"></s></span></div>
+<div id="rules" class="el card"><h2>Our rules this month</h2>
+  <div class="rule" id="ru0"><span class="x">x</span>Amazon app deleted</div><div class="rule" id="ru1"><span class="x">x</span>No blow money</div></div>
+<div id="fun" class="el card"><h2>#2 Free or cheap fun</h2><span class="ln" id="funa">Fall is the perfect time</span></div>
+<div id="ph0" class="el photo"><img src="hike.jpg"></div>
+<div id="ph1" class="el photo"><img src="sports.jpg"></div>
+<div id="ph2" class="el photo"><img src="boardgame.jpg"></div>
+<div id="fun2" class="el head" style="font-size:34px">Fun Doesn't Have<br>to Be Expensive</div>
+<div id="rest" class="el head" style="font-size:34px">That Restaurant Will<br>Be There Next Month</div>
+<div id="pay" class="el card"><h2>#3 The 3rd paycheck</h2>
+  <div class="pay"><i id="p0">1</i><i id="p1">2</i><i id="p2">3</i></div>
+  <span class="ln" id="paya">Bi-weekly? You get a <em>bonus paycheck</em></span></div>
+<div id="where" class="el card"><h2>Paycheck #3 goes to</h2><span class="ln" id="wa">Emergency fund <em>or</em> investments</span><span class="ln" id="wb">Not high-interest debt</span></div>
+<div id="buf" class="el head" style="font-size:36px">A Buffer =<br>Peace of Mind<span id="bufS" class="subin">financially <span id="bufS2" style="opacity:0">and emotionally</span></span></div>
+<div id="cta" class="el head" style="font-size:36px">Doing a Low<br>Spend Month?</div>
+<div id="pill" class="el pill">Comment <span style="color:#d9822b">"me too"</span></div>
+<div id="handle" class="el handle">Follow along @wealth_diet</div>
+<div id="cap" class="el cap"></div>
+<script>
+let TL=null; const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)); const easeOut=x=>1-Math.pow(1-x,3);
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+function win(el,t,s,e,kind='card',din=.35,dout=.22){
+  if(t<s-0.001||t>e+0.001){el.style.opacity=0;return 0}
+  const pi=cl((t-s)/din),po=cl((e-t)/dout),o=Math.min(easeOut(pi),po); el.style.opacity=o;
+  if(kind==='card') el.style.transform=`translateY(${(1-easeOut(pi))*-24}px) scale(${0.96+0.04*easeOut(pi)})`;
+  else if(kind==='pop') el.style.transform=`scale(${0.75+0.25*back(pi)})`;
+  return o}
+function reveal(el,t,s,d=.28){const p=cl((t-s)/d); if(el.classList.contains('ln')) el.style.display=t<s?'none':'block';
+  el.style.opacity=easeOut(p); el.style.transform=`translateY(${(1-easeOut(p))*8}px)`}
+function caption(t){const c=TL.caps.find(c=>t>=c.s&&t<c.e),el=$('cap'); if(!c){el.style.opacity=0;return}
+  el.style.opacity=1; if(el.dataset.k!=c.s){el.innerHTML=c.words.map(w=>`<span>${w.w}</span>`).join(' ');el.dataset.k=c.s}
+  [...el.children].forEach((s,i)=>s.className=t>=c.words[i].s-0.02?'on':'')}
+window.renderAt=function(t){const E=TL.ev;
+  win($('hook'),t,-1,E.hook.e,'pop',.001); reveal($('hookS'),t,E.hook.b1);
+  win($('cred'),t,E.cred.s,E.cred.e,'pop'); {const p=easeOut(cl((t-E.cred.c0)/(E.cred.c1-E.cred.c0)));$('credN').textContent='$'+Math.round(600*p)+'K'}
+  win($('reasons'),t,E.reasons.s,E.reasons.e,'pop'); reveal($('reasonsS'),t,E.reasons.b1);
+  win($('h1'),t,E.h1.s,E.h1.e); reveal($('h1a'),t,E.h1.b1);
+  win($('skip'),t,E.skip.s,E.skip.e); E.skip.x.forEach((x,i)=>{$('sk'+i).style.transform=`scaleX(${easeOut(cl((t-x)/.25))})`});
+  win($('rules'),t,E.rules.s,E.rules.e); E.rules.x.forEach((x,i)=>{$('ru'+i).style.opacity=t<x?.25:.25+.75*easeOut(cl((t-x)/.3))});
+  win($('fun'),t,E.fun.s,E.fun.e); reveal($('funa'),t,E.fun.b1);
+  E.photos.p.forEach((s,i)=>{const el=$('ph'+i),e=s+1.0; if(t<s||t>e){el.style.opacity=0;return}
+    const pi=cl((t-s)/.22),po=cl((e-t)/.18); el.style.opacity=Math.min(easeOut(pi),po); el.style.transform=`scale(${0.85+0.15*back(pi)})`});
+  win($('fun2'),t,E.fun2.s,E.fun2.e,'pop'); win($('rest'),t,E.rest.s,E.rest.e,'pop');
+  win($('pay'),t,E.pay.s,E.pay.e);
+  ['p0','p1','p2'].forEach((id,i)=>{const el=$(id),on=i<2?t>=E.pay.b12:t>=E.pay.b3;
+    el.style.background=on?(i<2?'#efe3bd':'#d9822b'):'#fff6d6'; el.style.color=on&&i==2?'#fff':'#8a7a50';
+    if(i==2){const p=cl((t-E.pay.b3)/.3);el.style.transform=`scale(${t<E.pay.b3?1:0.8+0.2*back(p)})`}});
+  reveal($('paya'),t,E.pay.b3+0.2);
+  win($('where'),t,E.where.s,E.where.e); reveal($('wa'),t,E.where.b1); reveal($('wb'),t,E.where.b2);
+  win($('buf'),t,E.buf.s,E.buf.e,'pop'); reveal($('bufS'),t,E.buf.b1); $('bufS2').style.opacity=easeOut(cl((t-E.buf.b2)/.3));
+  win($('cta'),t,E.cta.s,E.cta.e+1,'pop',.3,.01); win($('pill'),t,E.cta.b1,E.cta.e+1,'pop',.3,.01); win($('handle'),t,E.cta.b2,E.cta.e+1,'card',.3,.01);
+  caption(t)};
+window.init=async function(tl){TL=tl;await document.fonts.ready;
+  await Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>{i.onload=r;i.onerror=r})));return true};
+</script></body></html>
