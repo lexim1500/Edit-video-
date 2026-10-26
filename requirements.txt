@@ -1,0 +1,4 @@
+yt-dlp[curl-cffi]
+faster-whisper==1.2.1
+av==16.1.0
+imageio-ffmpeg
