@@ -71,7 +71,7 @@ function caption(t){const c=TL.caps.find(c=>t>=c.s&&t<c.e),el=$('cap'); if(!c){e
   [...el.children].forEach((s,i)=>s.className=t>=c.words[i].s-0.02?'on':'')}
 window.renderAt=function(t){const E=TL.ev;
   win($('hook'),t,-1,E.hook.e,'pop',.001); reveal($('hookS'),t,E.hook.b1);
-  win($('cred'),t,E.cred.s,E.cred.e,'pop'); {const p=easeOut(cl((t-E.cred.c0)/(E.cred.c1-E.cred.c0)));$('credN').textContent='$'+Math.round(600*p)+'K'}
+  win($('cred'),t,E.cred.s,E.cred.e,'pop'); {const p=easeOut(cl((t-E.cred.s)/(E.cred.c1-E.cred.s)));$('credN').textContent='$'+(Math.max(10,Math.round(600*p/10)*10))+'K'}
   win($('reasons'),t,E.reasons.s,E.reasons.e,'pop'); reveal($('reasonsS'),t,E.reasons.b1);
   win($('h1'),t,E.h1.s,E.h1.e); reveal($('h1a'),t,E.h1.b1);
   win($('skip'),t,E.skip.s,E.skip.e); E.skip.x.forEach((x,i)=>{$('sk'+i).style.transform=`scaleX(${easeOut(cl((t-x)/.25))})`});
@@ -86,7 +86,7 @@ window.renderAt=function(t){const E=TL.ev;
     if(i==2){const p=cl((t-E.pay.b3)/.3);el.style.transform=`scale(${t<E.pay.b3?1:0.8+0.2*back(p)})`}});
   reveal($('paya'),t,E.pay.b3+0.2);
   win($('where'),t,E.where.s,E.where.e); reveal($('wa'),t,E.where.b1); reveal($('wb'),t,E.where.b2);
-  win($('buf'),t,E.buf.s,E.buf.e,'pop'); reveal($('bufS'),t,E.buf.b1); $('bufS2').style.opacity=easeOut(cl((t-E.buf.b2)/.3));
+  win($('buf'),t,E.buf.s,E.buf.e,'pop'); reveal($('bufS'),t,E.buf.b1); $('bufS2').style.display=t<E.buf.b2?'none':'inline'; $('bufS2').style.opacity=easeOut(cl((t-E.buf.b2)/.3));
   win($('cta'),t,E.cta.s,E.cta.e+1,'pop',.3,.01); win($('pill'),t,E.cta.b1,E.cta.e+1,'pop',.3,.01); win($('handle'),t,E.cta.b2,E.cta.e+1,'card',.3,.01);
   caption(t)};
 window.init=async function(tl){TL=tl;await document.fonts.ready;
