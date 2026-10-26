@@ -15,6 +15,13 @@ for a,b in keep:
     for x,y in zip(edges,edges[1:]):
         x2,y2=round(x*30)/30,round(y*30)/30
         if y2-x2>0.03: segs.append((round(x2,4),round(y2,4),zoom_at(x)))
+merged=[]
+for a,b,z in segs:
+    if merged and b-a<0.25 and abs(merged[-1][1]-a)<1e-6: merged[-1]=(merged[-1][0],b,merged[-1][2]); continue
+    if merged and merged[-1][1]-merged[-1][0]<0.25 and abs(merged[-1][1]-a)<1e-6:
+        pa,pb,pz=merged.pop(); merged.append((pa,b,z)); continue
+    merged.append((a,b,z))
+segs=merged
 def m(t):
     acc=0
     for a,b,_ in segs:
