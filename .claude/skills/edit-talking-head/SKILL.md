@@ -18,17 +18,18 @@ Proven workflow from the first project ("Retirement is a number", Oct 2026). The
   **No end card** by default (user dropped it on video 2); hold the last frame about 0.8s instead.
 - Always send a **storyboard first** (PNG of real frames with mocked overlays), revise until they say "go".
   Never render the final video from this skill. New inputs go into an updated storyboard (with the real photos).
-- Headlines: **white Montserrat 800**, smaller rather than huge (the hook can be extra large, e.g. "AGE ≠ $$$").
+- Headlines: **white Montserrat 800 in Title Case** ("Low Spend Month", not all caps), **tight line-height (about 1.0)**,
+  small sub-lines placed directly under their title with no gap (approved on video 3). The hook can be extra large.
+  She rejected TikTok Sans and a periwinkle Futura-style look for titles; keep white Montserrat.
 - Cards: cream "paper" card (#fbf7ee), **no colored corner circles**, Montserrat, orange (#d9822b) for key words.
-- **All cards, headlines, photos and buttons sit above the speaker's head, centered on her face (x=270 of 540)**, never over the face.
+- **All top text is centered on the frame (x=270 of 540)** and sits above the speaker's head, never over the face (photos are the exception, see below).
   Above y=250 the safe zone allows up to x=480, so a 360px-wide element centered at 270 is fine.
 - **TikTok safe zone** on a 540×960 grid: 60px left, 120px right, 126px top, 320px bottom.
   Every graphic stays inside it. Draw it as a dashed box on storyboard frames.
 - Captions: word by word (spoken word white, upcoming at 50% white), placed **low, around the mic hand**
-  (caption block top at y=712 of 960, 320px wide, centered at x=270; moved down twice on video 2). That's slightly below the safe line; warn them to keep post descriptions short.
+  (caption block top at y=745 of 960, 320px wide, centered at x=270; moved lower again on video 3), in **TikTok Sans 500** (`npm pack @fontsource/tiktok-sans`) to match the plain captions on her page. That's slightly below the safe line; warn them to keep post descriptions short.
 - Use real photos when the user asks for an image. Ask the user for them (stock sites are blocked); they send them in chat.
-  Photo style (approved on video 2): **plain photos, no text, no frame, no tilt**, cropped to fill about 172×160 (of 540×960),
-  centered above the head, **one at a time, each on screen about 1 second**, popping in on the word that names it.
+  Photo style (approved on video 2): **plain photos, no text, no frame, no tilt**, cropped to fill. On video 3 she wanted them **large and centered on screen over her face** (340×380 at x=100, y=280 of 540×960), **one at a time, each on screen about 1 second**, popping in on the word that names it.
   `assets/calc.png` is their calculator cutout.
 - Voice only, no music, unless asked. Slight warm grade. Loudness -14 LUFS.
 - **No emojis anywhere**: not in post captions, titles, on-screen text, cards, buttons or storyboards. Use plain words or simple drawn icons instead.

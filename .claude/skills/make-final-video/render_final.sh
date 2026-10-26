@@ -5,7 +5,7 @@ set -euo pipefail
 RAW=$1; W=$2; OV=$3; OUT=$4
 C="-colorspace bt709 -color_primaries bt709 -color_trc bt709 -color_range tv"
 # 1. Frame-exact intermediate: every frame a keyframe, so each cut starts on the right frame.
-ffmpeg -hide_banner -loglevel error -y -i "$RAW" -map 0:v:0 -map 0:a:0 -vf "fps=30,format=yuv420p" \
+ffmpeg -hide_banner -loglevel error -y -i "$RAW" -map 0:v:0 -map 0:a:0 -vf "fps=30,scale=1080:1920:flags=lanczos,format=yuv420p" \
   -c:v libx264 -preset veryfast -crf 14 -g 1 -c:a pcm_s16le -ar 48000 "$W/mezz.mov"
 # 2. Safety check: no clip under 0.5s (single-frame zoom flashes look like glitches).
 python3 -I -c "import json,sys;a=json.load(open('$W/inputs.json'));d=[float(a[i+3]) for i in range(0,len(a),6)];m=min(d);print('shortest clip',m);sys.exit(1 if m<0.5 else 0)"
