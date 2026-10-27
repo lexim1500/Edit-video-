@@ -12,6 +12,25 @@ When they ask, switch to the `make-final-video` skill.
 Proven workflow from the first project ("Retirement is a number", Oct 2026). The
 `examples/` folder holds the exact files used there. Copy and adapt them; don't start from zero.
 
+## Preferred format now: "natural list" (approved on video 3, Low Spend Month)
+
+She rejected the busy card/zoom style ("the beginning was too spliced, it sounded cut up", "the text doesn't look
+like a CapCut or TikTok font"). Default to this format, modeled on a reference she sent (a creator's no-spend video):
+- **Few cuts, no zoom-ins.** Use whole takes; only trim pauses of 0.75s or more, keeping 0.22s before and 0.18s after
+  speech. Merge neighbouring takes of the same line run. About 10 clips for a 90s video, opening ideally uncut.
+- **Top title, one line, centered just above the head** (top ~y=205 of 960): white Montserrat 700. The hook may be caps
+  ("LOW SPEND MONTH"); numbered points are lowercase and **type themselves out** with a block cursor
+  ("1. the holidays are 2 months away"), staying up for the whole section. Shrink to fit rather than wrap.
+- **Sub-line** under a title in Playfair Display, sized to exactly the title's width.
+- **Captions: one word at a time**, Playfair Display 500, **black**, ~25px, centered **just below her hair, mid-stomach**
+  (top ~y=735 of 960), with a faint white glow.
+- No cards, charts, counters or end card. Photos (if she sends them) large and centered, about 1s each.
+- Example files: `examples/edit_low_spend_month_natural.py`, `examples/overlay_low_spend_month_natural.html`.
+- Before building, ask for or study a reference video if she shares one, and send a short opening sound check with
+  the storyboard when audio pacing matters.
+
+The older card-based defaults below still apply where they don't conflict (handle, safe zone, no emojis, captions rules).
+
 ## Creator defaults (from the user's feedback)
 
 - Handle: **@wealth_diet**. CTA: "Book a session · link in bio" button plus handle above the head.
