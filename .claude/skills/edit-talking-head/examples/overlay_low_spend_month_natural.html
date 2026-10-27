@@ -1,0 +1,47 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:M;font-weight:600;src:url(montserrat-latin-600-normal.woff2)}
+@font-face{font-family:M;font-weight:700;src:url(montserrat-latin-700-normal.woff2)}
+@font-face{font-family:T;font-weight:500;src:url(tiktok-sans-latin-500-normal.woff2)}
+@font-face{font-family:PF;font-weight:400;src:url(playfair-display-latin-400-normal.woff2)}
+@font-face{font-family:PF;font-weight:500;src:url(playfair-display-latin-500-normal.woff2)}
+html,body{margin:0;width:540px;height:960px;background:transparent;overflow:hidden}
+.el{position:absolute;opacity:0}
+.title{left:60px;width:420px;white-space:nowrap;top:205px;text-align:center;color:#fff;font-family:M;font-weight:700;font-size:28px;line-height:1.12;
+  text-shadow:0 1px 4px rgba(0,0,0,.35)}
+.title small{display:inline-block;white-space:nowrap;font-family:PF;font-weight:400;font-size:19px;line-height:1.15;margin-top:3px}
+.cur{display:inline-block;width:.5em;height:1em;background:#fff;vertical-align:-2px;margin-left:1px}
+.word{left:90px;width:360px;top:735px;text-align:center;color:#111;font-family:PF,serif;font-weight:500;font-size:25px;
+  text-shadow:0 0 6px rgba(255,255,255,.55)}
+.photo{left:110px;top:270px;width:320px;height:360px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+</style></head><body>
+<div id="hook" class="el title"><span class="tl" style="font-size:31px;letter-spacing:.3px;white-space:nowrap">LOW SPEND MONTH</span><br><small class="fit">why now is the best time</small></div>
+<div id="sec" class="el title"></div>
+<div id="cta" class="el title"><span class="tl" style="white-space:nowrap">doing a low spend month with me?</span><br><small class="fit">comment "me too" and follow along</small></div>
+<div id="ph0" class="el photo"><img src="hike.jpg"></div>
+<div id="ph1" class="el photo"><img src="sports.jpg"></div>
+<div id="ph2" class="el photo"><img src="boardgame.jpg"></div>
+<div id="word" class="el word"></div>
+<script>
+let TL=null,W=[]; const $=id=>document.getElementById(id); const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+function fade(el,t,s,e,d=.25){if(t<s||t>e){el.style.opacity=0;return 0} const o=Math.min(cl((t-s)/d),cl((e-t)/d)); el.style.opacity=o; return o}
+function typed(el,txt,t,s,e,cps=20){ if(t<s||t>e){el.style.opacity=0;return}
+  el.style.opacity=Math.min(1,cl((e-t)/.2)); const n=Math.min(txt.length,Math.floor((t-s)*cps)+1);
+  const typing=n<txt.length; const k=txt+'|'+n+'|'+typing; if(el.dataset.k===k) return; el.dataset.k=k;
+  el.innerHTML=txt.replace(/</g,'&lt;'); el.style.fontSize=''; fitOne(el); el.innerHTML=txt.slice(0,n).replace(/</g,'&lt;')+(typing?'<span class="cur"></span>':'') }
+function fitOne(el){el.style.fontSize='';const max=410;const w=el.scrollWidth;if(w>max){const f=parseFloat(getComputedStyle(el).fontSize);el.style.fontSize=(f*max/w).toFixed(2)+'px'}}
+window.renderAt=function(t){const E=TL.ev;
+  fade($('hook'),t,-1,E.hook.e,.2);
+  const sec=E.sec.find(x=>t>=x.s&&t<=x.e); if(sec) typed($('sec'),sec.n,t,sec.s,sec.e); else $('sec').style.opacity=0;
+  fade($('cta'),t,E.cta.s,E.cta.e+1,.25);
+  E.photos.p.forEach((s,i)=>{const el=$('ph'+i);const o=fade(el,t,s,s+1.0,.15);el.style.transform=`scale(${0.94+0.06*cl((t-s)/.2)})`});
+  let w=null; for(let i=0;i<W.length;i++){ if(W[i].s<=t+0.02){ const nx=i+1<W.length?W[i+1].s:TL.dur; if(t<nx && t-W[i].s<1.2) w=W[i]; } else break; }
+  const el=$('word'); if(!w||t>=TL.dur){el.style.opacity=0} else {el.style.opacity=1; if(el.textContent!==w.w) el.textContent=w.w.replace(/[.,:;!?]+$/,'')} };
+function fitSubs(){document.querySelectorAll('.title').forEach(t=>{const sm=t.querySelector('small.fit'); if(!sm) return;
+  const op=t.style.opacity; t.style.opacity=1; const w=Math.max(...[...t.querySelectorAll('.tl')].map(x=>x.getBoundingClientRect().width));
+  sm.style.fontSize='19px'; const sw=sm.getBoundingClientRect().width; sm.style.fontSize=(19*w/sw).toFixed(2)+'px'; t.style.opacity=op;})}
+window.init=async function(tl){TL=tl; W=tl.caps.flatMap(c=>c.words); await document.fonts.ready; document.querySelectorAll('#hook,#cta').forEach(fitOne); fitSubs();
+  await Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>{i.onload=r;i.onerror=r})));return true};
+</script></body></html>
